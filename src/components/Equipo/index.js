@@ -1,13 +1,46 @@
+import "./Equipo.css";
+import Colaborador from "../Colaborador";
+import hexToRgba from "hex-to-rgba";
 
-import './Equipo.css'
+const Equipo = (props) => {
+  // Destructuring
+  const { id, titulo, colorPrimario, colorSecundario } = props.datos;
+  const { colaboradores, eliminarColaborador, actualizarColor, like } = props;
 
-const Equipo = (props) =>{
+  const obj = {
+    backgroundColor: hexToRgba(colorPrimario, 0.6),
+  };
 
-    return <section className="equipo">
-        <h3>{props.datos.titulo}</h3>
-        <div className="colaboradores"></div>
-    </section>
+  const estiloTitulo = {
+    borderColor: colorPrimario,
+  };
 
-}
+  return (
+    <>
+      {colaboradores.length > 0 && (
+        <section className="equipo" style={obj}>
+          <input
+            type="color"
+            className="input-color"
+            value={colorPrimario}
+            onChange={(e) => actualizarColor(e.target.value, id)}
+          />
+          <h3 style={estiloTitulo}>{titulo}</h3>
+          <div className="colaboradores">
+            {colaboradores.map((colaborador, index) => (
+              <Colaborador
+                key={index}
+                datos={colaborador}
+                colorPrimario={colorPrimario}
+                eliminarColaborador={eliminarColaborador}
+                like={like}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  );
+};
 
-export default Equipo
+export default Equipo;

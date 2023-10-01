@@ -1,16 +1,28 @@
 .equipo {
     width: 100%;
-    background-color: #D9F7E9;
     padding: 32px;
     box-sizing: border-box;
     text-align: center;
     font-size: 32px;
+    position: relative;
 }
 
 .equipo h3{
-    color: #212121;
-    border-bottom: 4px solid #57C278 ;
+    color: #212121;    
+    border-bottom: 4px solid;
     font-weight: 400;
     display: inline-block;
     padding-bottom: 8px;
+} 
+
+.colaboradores {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.input-color{
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }
